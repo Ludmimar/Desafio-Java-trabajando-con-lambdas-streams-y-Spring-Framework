@@ -1,48 +1,75 @@
-# Desafio-Java-trabajando-con-lambdas-streams-y-Spring-Framework
+# 📚 Explorador de Libros – Gutendex API
 
-Proyecto: Explorador de Libros – Gutendex API
-Aplicación en Java que consume la API pública Gutendex para explorar el catálogo de libros de Project Gutenberg.
+Aplicación en **Java** que consume la API pública **Gutendex** para explorar el catálogo de libros de *Project Gutenberg*.  
 
-🔹 Funcionalidades principales:
-Conexión a una API REST usando HttpClient.
-Conversión de datos JSON a objetos Java con Jackson.
-Listado del Top 10 de libros más descargados.
-Búsqueda de libros por título ingresado por el usuario.
-Generación de estadísticas (máximo, mínimo, promedio y cantidad de descargas).
+---
 
-🔹 Habilidades demostradas:
-Consumo de APIs REST en Java.
-Manejo de JSON y mapeo a objetos (record).
-Uso de Streams, Optional y Collectors en Java.
-Interacción con el usuario vía consola.
-Aplicación de buenas prácticas (separación en capas service y model).
+## 🚀 Funcionalidades principales
+- 🔗 Conexión a una **API REST** usando `HttpClient` (Java 11+).  
+- 📦 Conversión de datos **JSON → objetos Java** con **Jackson**.  
+- 📊 Listado del **Top 10 de libros más descargados**.  
+- 🔍 Búsqueda de libros por título ingresado por el usuario.  
+- 📈 Generación de estadísticas: máximo, mínimo, promedio y cantidad de descargas.  
 
-Clase Principal
-Es la clase que orquesta todo el programa.
-Usa la API pública de Gutendex (un catálogo de libros de Project Gutenberg).
-Descarga información en JSON, la convierte en objetos Java, la muestra y permite interactuar con el usuario.
+---
 
-Funcionalidades:
-Mostrar el JSON completo que devuelve la API.
-Convertir ese JSON a objetos (Datos, DatosLibros, DatosAutor).
-Listar el Top 10 de libros más descargados.
-Permitir buscar un libro por título.
-Calcular estadísticas sobre las descargas (promedio, máximo, mínimo, cantidad de registros evaluados).
+## 🛠 Habilidades demostradas
+- Consumo de **APIs REST en Java**.  
+- Manejo de **JSON y mapeo a objetos** (`record`, `@JsonIgnoreProperties`).  
+- Uso de **Streams, Optional y Collectors** para procesamiento de datos.  
+- Interacción con el usuario vía **consola**.  
+- Buenas prácticas: separación en **capas service y model**.  
 
-Clase Datos
-Representa a un autor.
-Tiene nombre y año de nacimiento.
-Se ignoran otros datos extra que la API podría traer (@JsonIgnoreProperties).
+---
 
-Clase DatosLibros
-Representa un libro de la API.
-Tiene título, lista de autores, idiomas y número de descargas.
-Es la clase clave para manejar la información de cada libro.
+## 🧩 Principales clases
+- **Clase Principal**  
+  - Orquesta el programa.  
+  - Descarga la info desde la API Gutendex.  
+  - Convierte JSON a objetos Java.  
+  - Muestra resultados y gestiona interacción con el usuario.  
 
-Clase ConsumoAPI
-Se encarga de hacer la llamada HTTP a la API Gutendex.
-Usa HttpClient (Java 11+).
-Devuelve la respuesta como un String JSON.
+- **Datos**  
+  - Representa un autor (nombre, año de nacimiento).  
+  - Ignora datos irrelevantes con `@JsonIgnoreProperties`.  
 
-Interfaz IConvierteDatos
-Define un contrato genérico para convertir JSON → objeto Java.
+- **DatosLibros**  
+  - Representa un libro (título, autores, idiomas, descargas).  
+  - Clase clave para manejar la información.  
+
+- **ConsumoAPI**  
+  - Hace las llamadas HTTP con `HttpClient`.  
+  - Devuelve la respuesta en formato JSON (String).  
+
+- **IConvierteDatos**  
+  - Interfaz genérica para convertir JSON → objetos Java.  
+
+---
+
+## ⚙️ Tecnologías utilizadas
+- ☕ **Java 11+** → lenguaje de programación principal  
+- 🌐 **Gutendex API** → catálogo de libros de Project Gutenberg  
+- 📦 **Jackson** → deserialización de JSON a objetos Java  
+- 🔗 **HttpClient** → consumo de la API REST  
+- 🧮 **Java Streams & Collectors** → procesamiento de datos  
+- 🔑 **Optional** → manejo seguro de valores nulos  
+
+---
+
+## 🛠 Stack resumido
+`Java · HttpClient · Gutendex API · Jackson · Streams · Optional · Collectors`
+
+---
+
+## 📷 Flujo de la aplicación (opcional)
+```mermaid
+flowchart TD
+    A[Usuario] -->|Ingresa búsqueda o pide Top 10| B[Clase Principal]
+    B --> C[ConsumoAPI - HttpClient]
+    C --> D[Gutendex API]
+    D --> C
+    C --> E[Jackson - Convierte JSON a objetos]
+    E --> F[DatosLibros / Datos Autor]
+    F --> G[Procesamiento con Streams & Collectors]
+    G --> A[Resultados en consola]
+
